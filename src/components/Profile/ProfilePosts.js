@@ -17,7 +17,7 @@ import CheckIcon from "@mui/icons-material/Check";
 
 //////
 
-const Posts = ({ post }) => {
+const ProfilePosts = ({ post }) => {
   ////
 
   ///Declarations
@@ -44,7 +44,7 @@ const Posts = ({ post }) => {
     <div>
       <div
         style={{ boxShadow: "8px 7px 6px 0px rgba(166,153,153,0.68)" }}
-        className="shareBox flex flex-col p-5 border-2 border-slate-300 rounded-lg m-5 bg-white"
+        className="shareBox flex flex-col p-5 border-2 border-slate-300 rounded-lg ml-5 bg-white"
       >
         <div className="shareTop flex p-2 mb-2 flex-auto items-center">
           <Link to="/Profile">
@@ -79,7 +79,7 @@ const Posts = ({ post }) => {
         <div className="image">
           <img
             className="object-fill bg-black"
-            style={{ height: "70%", width: "100%" }}
+            style={{ height: "60%", width: "100%" }}
             src={post.photo}
             alt="Messi"
           />
@@ -140,4 +140,4 @@ const Posts = ({ post }) => {
   );
 };
 
-export default Posts;
+export default ProfilePosts;

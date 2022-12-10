@@ -11,7 +11,13 @@ const HomePage = () => {
   return (
     <div>
       <Topbar />
-      <div className="homeContainer grid grid-cols-4 grid-flow-col  gap-1 relative top-20 ">
+      <div
+        style={{
+          height: "43.9rem",
+          overflowY: "hidden",
+        }}
+        className="homeContainer grid grid-cols-4 grid-flow-col  gap-1 relative top-20 bg-gray-100 "
+      >
         <LeftSideBar />
         <Feed />
         <RightSideBar />

@@ -5,10 +5,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import AddAlertIcon from "@mui/icons-material/AddAlert";
 import ChatIcon from "@mui/icons-material/Chat";
 import { Link } from "react-router-dom";
+// import { Popover, Typography } from "@material-ui/core";
 
 const Topbar = () => {
   return (
-    <div className="flex items-center bg-sky-400 p-4 h-20 fixed top-0 left-0 right-0 z-10">
+    <div className="flex items-center bg-blue-500 p-4 h-20 fixed top-0 left-0 right-0 z-10">
       <div className="  text-5xl font-bold flex-auto ml-10 text-white">
         <Link to="/Home">SameBook</Link>
       </div>
@@ -26,7 +27,7 @@ const Topbar = () => {
             top: "30",
             left: "1000",
           }}
-          className=" text-sky-400 "
+          className=" text-blue-500 "
         />
       </div>
 
@@ -62,9 +63,10 @@ const Topbar = () => {
             }}
             className="text-white text-2xl "
           />
-          <p className="text-white text-center  bg-red-500 rounded-full h-5 w-5 text-sm ml-[-15px] mt-[px] z-10">
+
+          {/* <p className="text-white text-center  bg-red-500 rounded-full h-5 w-5 text-sm ml-[-15px] mt-[px] z-10">
             3
-          </p>
+          </p> */}
         </div>
         <Link to="/Profile">
           <div className="accountIcon">

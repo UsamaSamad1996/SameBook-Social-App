@@ -6,12 +6,12 @@ import WallpaperIcon from "@mui/icons-material/Wallpaper";
 import SendIcon from "@mui/icons-material/Send";
 import { Link } from "react-router-dom";
 
-const SharePost = () => {
+const ProfileSharePost = () => {
   return (
     <div>
       <div
         style={{ boxShadow: "8px 7px 6px 0px rgba(166,153,153,0.68)" }}
-        className="shareBox flex flex-col p-5 border-2 border-slate-300 rounded-lg m-5 bg-white"
+        className="shareBox flex flex-col p-5 border-2 border-slate-300 rounded-lg ml-5 mb-5 bg-white"
       >
         <div className="shareTop flex p-2 mb-2 flex-auto items-center">
           <Link to="/Profile">
@@ -48,4 +48,4 @@ const SharePost = () => {
   );
 };
 
-export default SharePost;
+export default ProfileSharePost;

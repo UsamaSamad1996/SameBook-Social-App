@@ -18,10 +18,11 @@ import profileImage from "../../images/usama.jpg";
 const LeftSideBar = () => {
   return (
     <div
-      style={{
-        height: "45rem",
-        overflowY: "scroll",
-      }}
+      // style={{
+      //   height: "45rem",
+      //   overflowY: "scroll",
+      // }}
+      className="hover:overflow-scroll h-screen"
     >
       <div className="sidebarwrapper pt-2 ">
         <ul className="sideBarList  leading-10 pl-4 list-inside text-lg ">
@@ -29,7 +30,7 @@ const LeftSideBar = () => {
             <li className="sideBarItem py-2 flex items-center">
               {" "}
               <img
-                className="h-14 w-14 rounded-full object-cover border-2 border-sky-400"
+                className="h-14 w-14 rounded-full object-cover border-2 border-blue-500"
                 src={profileImage}
                 alt="no poster"
               />
@@ -95,7 +96,7 @@ const LeftSideBar = () => {
         </ul>
         <hr />
         <div className="button flex items-center justify-center my-3 ">
-          <button className="py-1 px-5  bg-sky-400 text-white text-lg font-semibold rounded-md mb-3">
+          <button className="py-1 px-5  bg-blue-500 text-white text-lg font-semibold rounded-md mb-3">
             See More
           </button>
         </div>
