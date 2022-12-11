@@ -7,12 +7,12 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import MarkUnreadChatAltOutlinedIcon from "@mui/icons-material/MarkUnreadChatAltOutlined";
 import SendIcon from "@mui/icons-material/Send";
 
-// import SRK from "../../images/camel.avif";
+import SRK from "../../images/camel.avif";
 // import Vidyut from "../../images/vidyut.jpg";
 // import Rock from "../../images/rock.jpg";
 import Heart from "../../images/hearts.png";
 import Likes from "../../images/likes.png";
-import { users } from "../../DummyData";
+// import { users } from "../../DummyData";
 import CheckIcon from "@mui/icons-material/Check";
 
 //////
@@ -25,7 +25,7 @@ const ProfilePosts = ({ post }) => {
   const [likes, setLikes] = useState(post.like);
   const [isLike, setIsLike] = useState(false);
 
-  const member = users.find((user) => user.id === post.userID);
+  // const member = users.find((user) => user.id === post.userID);
 
   const handleLikes = () => {
     // setLikes(isLike ? likes - 1 : likes + 1);
@@ -51,12 +51,11 @@ const ProfilePosts = ({ post }) => {
             {" "}
             <img
               className="h-14 w-14 rounded-full object-cover border-2 border-blue-600"
-              src={member.profilePicture}
+              src={SRK}
               alt="no poster"
             />
           </Link>
           <p className="text-xl font-semibold pl-3 mb-1 leading-5">
-            {member.userName}
             {/* {users.filter((user) => user.id === post?.userID)[0].userName} */}
             <span>
               {" "}

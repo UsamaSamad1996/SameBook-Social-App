@@ -24,7 +24,7 @@ const LeftSideBar = () => {
       // }}
       className="hover:overflow-scroll h-screen"
     >
-      <div className="sidebarwrapper pt-2 ">
+      <div className="sidebarwrapper pt-2 mb-16">
         <ul className="sideBarList  leading-10 pl-4 list-inside text-lg ">
           <Link to="/Profile">
             <li className="sideBarItem py-2 flex items-center">

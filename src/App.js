@@ -7,10 +7,10 @@ import Register from "./pages/Register";
 function App() {
   return (
     <Routes>
-      <Route exact path="/" element={<Register />} />
-      <Route exact path="/Home" element={<HomePage />} />
-      <Route exact path="/Profile" element={<ProfilePage />} />
+      <Route exact path="/" element={<HomePage />} />
+      <Route exact path="/Register" element={<Register />} />
       <Route exact path="/LoginPage" element={<LoginPage />} />
+      <Route exact path="/Profile/:username" element={<ProfilePage />} />
     </Routes>
   );
 }

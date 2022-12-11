@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import profileImage from "../../images/usama.jpg";
-// import postImage from "../../images/messi2.jpg";
+import axios from "axios";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import MarkUnreadChatAltOutlinedIcon from "@mui/icons-material/MarkUnreadChatAltOutlined";
 import SendIcon from "@mui/icons-material/Send";
-
-// import SRK from "../../images/camel.avif";
-// import Vidyut from "../../images/vidyut.jpg";
-// import Rock from "../../images/rock.jpg";
 import Heart from "../../images/hearts.png";
 import Likes from "../../images/likes.png";
-import { users } from "../../DummyData";
 import CheckIcon from "@mui/icons-material/Check";
+// import profileImage from "../../images/usama.jpg";
+// import postImage from "../../images/messi2.jpg";
+import SRK from "../../images/usama.jpg";
+import LOL from "../../images/lol2.png";
+// import { format } from "timeago.js";
+// import Vidyut from "../../images/vidyut.jpg";
+// import Rock from "../../images/rock.jpg";
+// import { users } from "../../DummyData";
+import { format } from "timeago.js";
 
 //////
 
@@ -22,10 +25,22 @@ const Posts = ({ post }) => {
 
   ///Declarations
 
-  const [likes, setLikes] = useState(post.like);
+  const [likes, setLikes] = useState(post.likes.length);
   const [isLike, setIsLike] = useState(false);
+  const [user, setUser] = useState({});
 
-  const member = users.find((user) => user.id === post.userID);
+  //// Functions
+
+  useEffect(() => {
+    (async () => {
+      const response = await axios.get(`users/${post.userId}`);
+      // console.log(response);
+      if (!response.status === 200) throw Error("data not found");
+
+      const resData = await response.data;
+      setUser(resData);
+    })();
+  }, [post.userId]);
 
   const handleLikes = () => {
     // setLikes(isLike ? likes - 1 : likes + 1);
@@ -38,6 +53,8 @@ const Posts = ({ post }) => {
     setIsLike(!isLike);
   };
 
+  // console.log(post);
+
   //// Return
 
   return (
@@ -47,16 +64,16 @@ const Posts = ({ post }) => {
         className="shareBox flex flex-col p-5 border-2 border-slate-300 rounded-lg m-5 bg-white"
       >
         <div className="shareTop flex p-2 mb-2 flex-auto items-center">
-          <Link to="/Profile">
+          <Link to={`/profile/${user.username}`}>
             {" "}
             <img
               className="h-14 w-14 rounded-full object-cover border-2 border-blue-600"
-              src={member.profilePicture}
+              src={user.profilePicture || SRK}
               alt="no poster"
             />
           </Link>
           <p className="text-xl font-semibold pl-3 mb-1 leading-5">
-            {member.userName}
+            {user.username}
             {/* {users.filter((user) => user.id === post?.userID)[0].userName} */}
             <span>
               {" "}
@@ -65,7 +82,10 @@ const Posts = ({ post }) => {
                 className="bg-blue-600 text-white rounded-full mb-[5px]"
               />
             </span>
-            <br /> <span className="text-sm font-normal">{post.date}</span>
+            <br />{" "}
+            <span className="text-sm font-normal">
+              {format(post.createdAt)}
+            </span>
           </p>
           <div className=" flex flex-auto justify-end">
             <MoreVertIcon style={{ fontSize: "2rem" }} />
@@ -73,39 +93,62 @@ const Posts = ({ post }) => {
         </div>
 
         <div className="description p-1 text-lg">
-          <p>{post.description}</p>
+          <p>{post.desc}</p>
         </div>
 
         <div className="image">
           <img
             className="object-fill bg-black"
             style={{ height: "70%", width: "100%" }}
-            src={post.photo}
+            src={post.img || SRK}
             alt="Messi"
           />
         </div>
 
         <div className="likesComment flex py-2 ">
           <div className="likes flex ml-2 items-center justify-center">
-            <img
-              className="h-8 w-8 rounded-full object-fill "
-              src={Likes}
-              alt="Likes"
-            />{" "}
-            <img
-              className="h-8 w-8 rounded-full object-fill "
-              src={Heart}
-              alt="Hearts"
-            />{" "}
+            {likes > 0 ? (
+              <div className="flex">
+                <img
+                  className="h-6 w-6 rounded-full object-fill "
+                  src={Likes}
+                  alt="Likes"
+                />{" "}
+                <img
+                  className="h-6 w-6 rounded-full object-fill "
+                  src={Heart}
+                  alt="Hearts"
+                />
+              </div>
+            ) : (
+              <div className="flex">
+                <img
+                  className="h-6 w-6 my-0 object-fill "
+                  src={LOL}
+                  alt="Hearts"
+                />
+              </div>
+            )}
+
             <p className="pl-2 text-lg text-slate-600">
-              Hamzah & {likes} Others
+              {likes > 1 && isLike === true
+                ? `You & ${likes} Others`
+                : likes > 1 && isLike === false
+                ? `${likes} Likes`
+                : likes === 1 && isLike === false
+                ? `${likes} Like`
+                : likes === 0 && isLike === false
+                ? ` LoL No Likes`
+                : likes === 1 && isLike === true
+                ? `You Like It`
+                : ""}
             </p>
           </div>
           <div className="counts flex flex-grow justify-end items-center text-lg text-slate-600">
-            <p>Comments {post.comment}M</p>
+            <p>{Math.round(Math.random() * 10)} Comments</p>
 
-            <p className="ml-5 ">Likes {post.like}M</p>
-            <p className="ml-5 mr-5">Shares 50</p>
+            <p className="ml-5 ">{likes > 0 ? `${likes} Likes` : ""}</p>
+            <p className="ml-5 mr-5">{Math.round(Math.random() * 10)} Shares</p>
           </div>
         </div>
 

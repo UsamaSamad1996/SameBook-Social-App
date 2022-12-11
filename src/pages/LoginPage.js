@@ -8,7 +8,7 @@ const LoginPage = () => {
   /// Functions
 
   const handleSubmit = () => {
-    history("/Home");
+    history("/");
   };
 
   /// Return

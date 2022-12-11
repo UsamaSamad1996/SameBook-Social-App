@@ -66,7 +66,7 @@ const ProfileIntroBar = () => {
 
         <div className="grid grid-cols-3 grid-flow-row">
           {users?.map((user) => (
-            <div className="flex-grow flex  justify-center  my-1">
+            <div key={user.id} className="flex-grow flex  justify-center  my-1">
               <Link to="/Profile">
                 <img
                   className="h-24 w-24  object-cover rounded-xl"

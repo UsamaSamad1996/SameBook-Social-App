@@ -47,7 +47,7 @@ export const posts = [
     userID: 1,
     date: "Yesterday at 06:00 PM",
     description: "The King of BollyWood SRK",
-    photo: SRK,
+    photo: Usama,
     like: 14,
     comment: 10,
   },

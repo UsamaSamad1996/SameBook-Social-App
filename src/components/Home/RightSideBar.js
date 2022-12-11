@@ -15,7 +15,7 @@ const RightSideBar = () => {
       // }}
       className="hover:overflow-scroll h-screen"
     >
-      <div className="rightbarwrapper pt-2 ">
+      <div className="rightbarwrapper pt-2 mb-16">
         <div className="heading flex items-center">
           <h1 className="text-3xl font-semibold text-slate-600 pt-3 pb-4 pl-10  ">
             Online Friends List

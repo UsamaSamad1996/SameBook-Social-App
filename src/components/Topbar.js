@@ -11,7 +11,7 @@ const Topbar = () => {
   return (
     <div className="flex items-center bg-blue-500 p-4 h-20 fixed top-0 left-0 right-0 z-10">
       <div className="  text-5xl font-bold flex-auto ml-10 text-white">
-        <Link to="/Home">SameBook</Link>
+        <Link to="/">SameBook</Link>
       </div>
 
       <div className="flex-grow">
@@ -32,7 +32,7 @@ const Topbar = () => {
       </div>
 
       <div className=" flex justify-evenly items-center flex-auto">
-        <Link to="/Home">
+        <Link to="/">
           <div className="homeIcon flex ">
             <HomeIcon
               style={{
