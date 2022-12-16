@@ -8,34 +8,31 @@ import SendIcon from "@mui/icons-material/Send";
 import Heart from "../../images/hearts.png";
 import Likes from "../../images/likes.png";
 import CheckIcon from "@mui/icons-material/Check";
-// import profileImage from "../../images/usama.jpg";
-// import postImage from "../../images/messi2.jpg";
-import SRK from "../../images/usama.jpg";
+import Avatar from "../../images/avatar.png";
 import LOL from "../../images/lol2.png";
-// import { format } from "timeago.js";
-// import Vidyut from "../../images/vidyut.jpg";
-// import Rock from "../../images/rock.jpg";
-// import { users } from "../../DummyData";
 import { format } from "timeago.js";
+// import UsamaPic from "../../images/usama2.jpg";
 
 //////
 
 const Posts = ({ post }) => {
   ////
-
+  // console.log(post);
   ///Declarations
 
+  const [user, setUser] = useState({});
   const [likes, setLikes] = useState(post.likes.length);
   const [isLike, setIsLike] = useState(false);
-  const [user, setUser] = useState({});
+
+  // console.log(user);
 
   //// Functions
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get(`users/${post.userId}`);
+      //get a user of a Post
+      const response = await axios.get(`/users?userId=${post.userId}`);
       // console.log(response);
-      if (!response.status === 200) throw Error("data not found");
 
       const resData = await response.data;
       setUser(resData);
@@ -64,11 +61,11 @@ const Posts = ({ post }) => {
         className="shareBox flex flex-col p-5 border-2 border-slate-300 rounded-lg m-5 bg-white"
       >
         <div className="shareTop flex p-2 mb-2 flex-auto items-center">
-          <Link to={`/profile/${user.username}`}>
+          <Link to={`/Profile/${user._id}`}>
             {" "}
             <img
               className="h-14 w-14 rounded-full object-cover border-2 border-blue-600"
-              src={user.profilePicture || SRK}
+              src={user.profilePicture || Avatar}
               alt="no poster"
             />
           </Link>
@@ -92,18 +89,26 @@ const Posts = ({ post }) => {
           </div>
         </div>
 
-        <div className="description p-1 text-lg">
-          <p>{post.desc}</p>
-        </div>
+        {post.img ? (
+          <div>
+            <div className="description pl-2 pr-5 pb-2 text-lg text-justify">
+              <p>{post.desc}</p>
+            </div>
 
-        <div className="image">
-          <img
-            className="object-fill bg-black"
-            style={{ height: "70%", width: "100%" }}
-            src={post.img || SRK}
-            alt="Messi"
-          />
-        </div>
+            <div className="image">
+              <img
+                className="object-fill bg-black"
+                style={{ height: "70%", width: "100%" }}
+                src={post.img}
+                alt="Image Not Supported"
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="description pl-2 pr-5 pb-4 text-lg text-justify">
+            <p>{post.desc}</p>
+          </div>
+        )}
 
         <div className="likesComment flex py-2 ">
           <div className="likes flex ml-2 items-center justify-center">
@@ -144,6 +149,7 @@ const Posts = ({ post }) => {
                 : ""}
             </p>
           </div>
+
           <div className="counts flex flex-grow justify-end items-center text-lg text-slate-600">
             <p>{Math.round(Math.random() * 10)} Comments</p>
 

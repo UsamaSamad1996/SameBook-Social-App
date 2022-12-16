@@ -1,12 +1,34 @@
-import React from "react";
-import profileImage from "../../images/usama.jpg";
+import React, { useState, useEffect } from "react";
+import Avatar from "../../images/avatar.png";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import WallpaperIcon from "@mui/icons-material/Wallpaper";
 import SendIcon from "@mui/icons-material/Send";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-const ProfileSharePost = () => {
+////////////////////
+
+const ProfileSharePost = ({ id }) => {
+  //////////// Declarations
+
+  const [user, setUser] = useState({});
+
+  ///// Functions
+
+  useEffect(() => {
+    (async () => {
+      //get a user
+      const response = await axios.get(`/users?userId=${id}`);
+      console.log(response);
+      if (!response.status === 200) throw Error("data not found");
+
+      const resData = await response.data;
+      setUser(resData);
+    })();
+  }, [id]);
+  //// Return
+
   return (
     <div>
       <div
@@ -18,7 +40,7 @@ const ProfileSharePost = () => {
             {" "}
             <img
               className="h-14 w-16 rounded-full object-cover border-2 border-blue-500"
-              src={profileImage}
+              src={user.profilePicture || Avatar}
               alt="no poster"
             />
           </Link>

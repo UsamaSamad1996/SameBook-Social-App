@@ -1,17 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import HouseIcon from "@mui/icons-material/House";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
+import WorkIcon from "@mui/icons-material/Work";
+// import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import EmailIcon from "@mui/icons-material/Email";
 
-// import profileImage from "../../images/usama.jpg";
-// import Messi from "../../images/srk.png";
-// import Vidyut from "../../images/vidyut.jpg";
-// import Rock from "../../images/rock.jpg";
-import { users } from "../../DummyData";
+const ProfileIntroBar = ({ user }) => {
+  //// Declarations
 
-const ProfileIntroBar = () => {
+  //// Return
+
   return (
     <div
       className="ml-1"
@@ -30,28 +30,42 @@ const ProfileIntroBar = () => {
           </h1>
         </div>
         <div className="IntroList ">
-          <ul className="pl-5 leading-10  pb-5 text-lg  text-slate-700 ">
-            <li className="my-1">
-              <LocationOnIcon /> Live in Karachi, Pakistan
+          <ul className="pl-5 leading-9  pb-5 text-1xl  text-slate-700 ">
+            <li className="my-1 flex items-center">
+              <LocationOnIcon className="mr-2 " /> Live in {user.city}
             </li>
-            <li className="my-1">
-              <HouseIcon /> From Karachi, Pakistan
+            <li className="my-1 flex items-center ">
+              <HouseIcon className="mr-2 " /> From {user.from}
             </li>
-            <li className="my-1">
-              <FavoriteIcon /> Single
+            <li className="my-1 flex items-center">
+              <FavoriteIcon className="mr-2" />{" "}
+              {user.relationship === 1
+                ? "Single"
+                : user.relationship === 2
+                ? "Married"
+                : ""}
             </li>
-            <li className="my-1">
-              <RssFeedIcon /> Followed By 3116 people
+            <li className="my-1 flex items-center  ">
+              <RssFeedIcon className="mr-2" /> Followed By{" "}
+              {user.followers?.length} people
+            </li>
+            <li className="my-1 flex items-center">
+              <WorkIcon className="mr-2" /> {""}
+              {user.desc}
+            </li>
+            <li className="my-1 flex items-center">
+              <EmailIcon className="mr-2" /> {""}
+              {user.email}
             </li>
           </ul>
         </div>
 
         <hr />
-        {/* <div className="button flex items-center justify-center my-3 ">
-          <button className="py-1 px-5  bg-sky-400 text-white text-lg font-semibold rounded-md mb-3">
-            See More
+        <div className="button flex items-center justify-center my-3 ">
+          <button className="py-1 px-10   bg-blue-500 text-white text-lg font-semibold rounded-md mb-2">
+            Edit
           </button>
-        </div> */}
+        </div>
       </div>
 
       <div
@@ -65,7 +79,7 @@ const ProfileIntroBar = () => {
         </div>
 
         <div className="grid grid-cols-3 grid-flow-row">
-          {users?.map((user) => (
+          {/* {users?.map((user) => (
             <div key={user.id} className="flex-grow flex  justify-center  my-1">
               <Link to="/Profile">
                 <img
@@ -79,7 +93,7 @@ const ProfileIntroBar = () => {
                 </p>
               </Link>
             </div>
-          ))}
+          ))} */}
         </div>
 
         <hr />

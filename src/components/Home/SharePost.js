@@ -1,12 +1,18 @@
 import React from "react";
-import profileImage from "../../images/usama.jpg";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import WallpaperIcon from "@mui/icons-material/Wallpaper";
 import SendIcon from "@mui/icons-material/Send";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contextAPI/AuthContext";
+import Avatar from "../../images/avatar.png";
 
 const SharePost = () => {
+  const { user } = useContext(AuthContext);
+
+  //// Return
+
   return (
     <div>
       <div
@@ -18,7 +24,7 @@ const SharePost = () => {
             {" "}
             <img
               className="h-14 w-16 rounded-full object-cover border-2 border-blue-500"
-              src={profileImage}
+              src={user.profilePicture || Avatar}
               alt="no poster"
             />
           </Link>

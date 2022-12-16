@@ -1,20 +1,39 @@
-import React from "react";
+import axios from "axios";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   //// Declarations
 
-  //   const history = useNavigate();
-  /// Functions
+  const history = useNavigate();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-  //   const handleSubmit = () => {
-  //     history("/LoginPage");
-  //   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (password === confirmPassword) {
+      const user = { username, email, password };
+      console.log(user);
+      try {
+        await axios.post("/auth/register", user);
+      } catch (error) {
+        console.log(error);
+      }
+      history("/");
+    } else {
+      setPasswordError("Password Don't Match");
+    }
+  };
 
   /// Return
 
   return (
-    <div className="body grid grid-cols-2 h-screen items-center bg-gray-50">
+    <div className="body grid grid-cols-2 h-screen items-center bg-gray-100">
+      {/* Left Column of App Title & Description */}
       <div className="AppNameDescription py-10 pl-10 ml-20 ">
         <h1 className="text-5xl font-bold text-start text-blue-600 py-5 ">
           SameBook
@@ -27,33 +46,58 @@ const Register = () => {
         </p>
       </div>
 
-      <div className="loginForm  py-5 flex flex-col bg-white rounded-2xl w-3/5">
-        <form>
+      {/* Right Column Of Registration Form */}
+      <div className="  py-5 flex flex-col bg-white rounded-2xl w-3/5 ml-14">
+        {/* Div Of Register Form */}
+        <form onSubmit={handleSubmit}>
+          {/* this is 1st Div of 4 input fields */}
           <div className="inputs flex-auto flex flex-col p-1  w-full ml-12  mb-2">
+            {/* 1st Input of UserName */}
             <input
               className=" w-4/5 rounded-2xl p-3 placeholder-slate-500 border-2  border-slate-500 text-xl"
               type="name"
               placeholder="UserName"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
             />
             <br />
+            {/* 1st Input of Email */}
             <input
               className=" w-4/5 rounded-2xl p-3 placeholder-slate-500 border-2  border-slate-500 text-xl"
               type="email"
               placeholder="Email or Phone Number"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
-            <br />{" "}
+            <br />
+            {/* 1st Input of CreatePassword */}
             <input
               className=" w-4/5 rounded-2xl p-3 placeholder-slate-500 border-2  border-slate-500 text-xl"
               type="password"
               placeholder="Create Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              autoComplete="false"
+              // minLength={10}
             />
             <br />
+            {/* 1st Input of ConfirmPassword */}
             <input
               className=" w-4/5 rounded-2xl p-3 placeholder-slate-500 border-2  border-slate-500 text-xl"
               type="password"
               placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              autoComplete="false"
             />
+            <p className="text-red-600 text-sm">{passwordError}</p>
           </div>
+
+          {/* this is 2nd Div of Sign Up Button */}
           <div className="button flex-auto flex flex-col p-1  w-full ml-12 ">
             <button
               type="submit"
@@ -64,16 +108,11 @@ const Register = () => {
           </div>
         </form>
 
-        {/* <div className="forgot flex-auto flex flex-col p-1  w-full ml-12  ">
-          <button className="w-4/5 rounded-2xl p-3 placeholder-slate-500 text-blue-600 font-semibold mt-3 bg-white text-lg">
-            Forgot Account?
-          </button>
-        </div> */}
-
         <hr />
 
+        {/* Div of Login Button */}
         <div className="button flex-auto flex flex-col p-1  w-full ml-24 mt-2 mb-5">
-          <Link to="/LoginPage">
+          <Link to="/">
             <button className="w-3/5 rounded-2xl p-3 placeholder-slate-500 text-white font-semibold mt-4 bg-green-500 text-lg">
               Log Into Account
             </button>

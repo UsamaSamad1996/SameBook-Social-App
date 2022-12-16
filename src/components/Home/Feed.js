@@ -1,31 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SharePost from "./SharePost";
 import axios from "axios";
 import Posts from "./Posts";
+import { AuthContext } from "../../contextAPI/AuthContext";
 // import { posts } from "../../DummyData";
 
 const Feed = () => {
+  /// Declarations
+  const { user } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
-  // const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   async () => {
-  //     const response = await axios.get(
-  //       "posts/timeline/639082b2153b59078409a023"
-  //     );
-  //     console.log(response);
-  //   };
-  // }, []);
   useEffect(() => {
     (async () => {
-      const response = await axios.get(
-        "posts/timeline/639082b2153b59078409a023"
-      );
-      // console.log(response);
-      if (!response.status === 200) throw Error("data not found");
-
-      const resData = await response.data;
-      setPosts(resData);
+      //get timeline posts
+      const posts = await axios.get(`/posts/timeline/${user._id}`);
+      // console.log(posts);
+      if (!posts.status === 200) throw Error("data not found");
+      const postsData = await posts.data;
+      setPosts(postsData);
     })();
   }, []);
 

@@ -11,11 +11,14 @@ import SportsVolleyballIcon from "@mui/icons-material/SportsVolleyball";
 import LocalGroceryStoreOutlinedIcon from "@mui/icons-material/LocalGroceryStoreOutlined";
 import { Link } from "react-router-dom";
 import messengerImage from "../../images/messenger.png";
-import profileImage from "../../images/usama.jpg";
+import Avatar from "../../images/avatar.png";
+import { AuthContext } from "../../contextAPI/AuthContext";
+import { useContext } from "react";
 
 ////
 
 const LeftSideBar = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div
       // style={{
@@ -30,11 +33,13 @@ const LeftSideBar = () => {
             <li className="sideBarItem py-2 flex items-center">
               {" "}
               <img
-                className="h-14 w-14 rounded-full object-cover border-2 border-blue-500"
-                src={profileImage}
+                className="h-14 w-14 rounded-full object-cover border-2 border-blue-500 bg-blue-500"
+                src={user.profilePicture || Avatar}
                 alt="no poster"
               />
-              <span className="pl-5 text-2xl font-semibold">Usama Samad</span>
+              <span className="pl-5 text-2xl font-semibold">
+                {user.username}
+              </span>
             </li>
           </Link>
           <li className="sideBarItem py-1.5 flex items-center">
