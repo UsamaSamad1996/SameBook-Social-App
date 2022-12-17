@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import MarkUnreadChatAltOutlinedIcon from "@mui/icons-material/MarkUnreadChatAltOutlined";
@@ -6,27 +6,34 @@ import SendIcon from "@mui/icons-material/Send";
 import { format } from "timeago.js";
 import Heart from "../../images/hearts.png";
 import Likes from "../../images/likes.png";
-// import { users } from "../../DummyData";
 import CheckIcon from "@mui/icons-material/Check";
 import Avatar from "../../images/avatar.png";
 import LOL from "../../images/lol2.png";
+import axios from "axios";
+import { AuthContext } from "../../contextAPI/AuthContext";
 
 //////
 
-const ProfilePosts = ({ post, user }) => {
+const ProfilePosts = ({ post, postuser }) => {
   ////
 
   ///Declarations
   // console.log(user);
-
+  const { user } = useContext(AuthContext);
   const [likes, setLikes] = useState(post.likes.length);
   const [isLike, setIsLike] = useState(false);
 
   // const member = users.find((user) => user.id === post.userID);
 
+  useEffect(() => {
+    setIsLike(post.likes.includes(user._id));
+  }, [user._id, post.likes]);
+
   const handleLikes = () => {
-    // setLikes(isLike ? likes - 1 : likes + 1);
-    // setIsLike(!isLike);
+    try {
+      axios.put(`/posts/${post._id}/like`, { userId: user._id });
+    } catch (error) {}
+
     if (isLike) {
       setLikes(likes - 1);
     } else {
@@ -47,11 +54,11 @@ const ProfilePosts = ({ post, user }) => {
           {" "}
           <img
             className="h-14 w-14 rounded-full object-cover border-2 border-blue-600"
-            src={user.profilePicture || Avatar}
+            src={postuser.profilePicture || Avatar}
             alt="no poster"
           />
           <p className="text-xl font-semibold pl-3 mb-1 leading-5">
-            {user.username}
+            {postuser.username}
             <span>
               {" "}
               <CheckIcon

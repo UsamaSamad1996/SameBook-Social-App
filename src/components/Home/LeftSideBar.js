@@ -29,7 +29,7 @@ const LeftSideBar = () => {
     >
       <div className="sidebarwrapper pt-2 mb-16">
         <ul className="sideBarList  leading-10 pl-4 list-inside text-lg ">
-          <Link to="/Profile">
+          <Link to={`/Profile/${user._id}`}>
             <li className="sideBarItem py-2 flex items-center">
               {" "}
               <img

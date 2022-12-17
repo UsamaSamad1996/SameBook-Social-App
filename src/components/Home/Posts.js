@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -11,16 +11,19 @@ import CheckIcon from "@mui/icons-material/Check";
 import Avatar from "../../images/avatar.png";
 import LOL from "../../images/lol2.png";
 import { format } from "timeago.js";
+import { AuthContext } from "../../contextAPI/AuthContext";
+
 // import UsamaPic from "../../images/usama2.jpg";
 
 //////
 
 const Posts = ({ post }) => {
   ////
-  // console.log(post);
+
   ///Declarations
 
-  const [user, setUser] = useState({});
+  const { user } = useContext(AuthContext);
+  const [postUser, setPostUser] = useState({});
   const [likes, setLikes] = useState(post.likes.length);
   const [isLike, setIsLike] = useState(false);
 
@@ -29,17 +32,24 @@ const Posts = ({ post }) => {
   //// Functions
 
   useEffect(() => {
+    setIsLike(post.likes.includes(user._id));
+  }, [user._id, post.likes]);
+
+  useEffect(() => {
     (async () => {
       //get a user of a Post
       const response = await axios.get(`/users?userId=${post.userId}`);
       // console.log(response);
 
       const resData = await response.data;
-      setUser(resData);
+      setPostUser(resData);
     })();
   }, [post.userId]);
 
   const handleLikes = () => {
+    try {
+      axios.put(`/posts/${post._id}/like`, { userId: user._id });
+    } catch (error) {}
     // setLikes(isLike ? likes - 1 : likes + 1);
     // setIsLike(!isLike);
     if (isLike) {
@@ -61,16 +71,16 @@ const Posts = ({ post }) => {
         className="shareBox flex flex-col p-5 border-2 border-slate-300 rounded-lg m-5 bg-white"
       >
         <div className="shareTop flex p-2 mb-2 flex-auto items-center">
-          <Link to={`/Profile/${user._id}`}>
+          <Link to={`/Profile/${postUser._id}`}>
             {" "}
             <img
               className="h-14 w-14 rounded-full object-cover border-2 border-blue-600"
-              src={user.profilePicture || Avatar}
+              src={postUser.profilePicture || Avatar}
               alt="no poster"
             />
           </Link>
           <p className="text-xl font-semibold pl-3 mb-1 leading-5">
-            {user.username}
+            {postUser.username}
             {/* {users.filter((user) => user.id === post?.userID)[0].userName} */}
             <span>
               {" "}
@@ -100,7 +110,7 @@ const Posts = ({ post }) => {
                 className="object-fill bg-black"
                 style={{ height: "70%", width: "100%" }}
                 src={post.img}
-                alt="Image Not Supported"
+                alt="File Not Supported"
               />
             </div>
           </div>

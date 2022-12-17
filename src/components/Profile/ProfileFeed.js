@@ -1,26 +1,26 @@
 import React from "react";
 import ProfilePosts from "./ProfilePosts";
 import ProfileSharePost from "../Profile/ProfileSharePost";
-// import { posts } from "../../DummyData";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const ProfileFeed = ({ user }) => {
-  ////
-  // console.log(user);
+const ProfileFeed = ({ username, user }) => {
+  ///////////////////////////
+
   // Declarations
+
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     (async () => {
       //get profile posts
-      const response = await axios.get(`/posts/profile/${user.username}`);
+      const response = await axios.get(`/posts/profile/${username}`);
       // console.log(response);
-      // if (!response.status === 200) throw Error("data not found");
+      if (!response.status === 200) throw Error("data not found");
       const resData = await response.data;
       setPosts(resData);
     })();
-  }, [user.username]);
+  }, [username]);
 
   //// Return
 
@@ -35,7 +35,7 @@ const ProfileFeed = ({ user }) => {
       {/* <ProfileSharePost id={user._id} /> */}
       {posts.map((post) => (
         <div key={post._id}>
-          <ProfilePosts post={post} user={user} />
+          <ProfilePosts post={post} postuser={user} />
         </div>
       ))}
     </div>

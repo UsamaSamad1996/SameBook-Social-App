@@ -110,7 +110,7 @@ const Topbar = () => {
           </p> */}
         </div>
         {/* this is the div of Profile Icon Link To User Profile Page on Topbar*/}
-        <Link to={`/Profile`}>
+        <Link to={`/Profile/${user._id}`}>
           <div className="accountIcon">
             <img
               className="h-14 w-14 rounded-full object-cover border-2 border-white bg-white"

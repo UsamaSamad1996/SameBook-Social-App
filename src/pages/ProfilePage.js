@@ -96,7 +96,7 @@ const ProfilePage = () => {
       <div className="profileBody flex  justify-center">
         <div className="gridContainer grid grid-cols-3 grid-flow-col w-4/6 relative top-5  ml-7 rounded-2xl">
           <ProfileIntroBar user={postUser} />
-          <ProfileFeed user={postUser} />
+          <ProfileFeed username={postUser.username} user={postUser} />
         </div>
       </div>
     </div>
