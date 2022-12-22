@@ -15,22 +15,29 @@ import Avatar from "../../images/avatar.png";
 import { AuthContext } from "../../contextAPI/AuthContext";
 import { useContext } from "react";
 
-////
+//////////////////////////////////////////////////////////////////
 
 const LeftSideBar = () => {
+  //
+  //////////////////////////////////////////////////////////////////
+
   const { user } = useContext(AuthContext);
+
+  //////////////////////////////////////////////////////////////////
+
   return (
     <div
-      // style={{
-      //   height: "45rem",
-      //   overflowY: "scroll",
-      // }}
-      className="hover:overflow-scroll h-screen"
+      style={{
+        position: "fixed",
+        width: "25%",
+        height: "43.9rem",
+      }}
+      className="hover:overflow-y-scroll hidden md:flex"
     >
-      <div className="sidebarwrapper pt-2 mb-16">
+      <div className="sidebarwrapper pt-2  ">
         <ul className="sideBarList  leading-10 pl-4 list-inside text-lg ">
           <Link to={`/Profile/${user._id}`}>
-            <li className="sideBarItem py-2 flex items-center">
+            <li className="sideBarItem pb-2 pt-4 flex items-center">
               {" "}
               <img
                 className="h-14 w-14 rounded-full object-cover border-2 border-blue-500 bg-blue-500"

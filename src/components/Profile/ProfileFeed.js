@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProfilePosts from "./ProfilePosts";
 import ProfileSharePost from "../Profile/ProfileSharePost";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { AuthContext } from "../../contextAPI/AuthContext";
 
-const ProfileFeed = ({ username, user }) => {
+const ProfileFeed = ({ username, postuser }) => {
   ///////////////////////////
 
   // Declarations
 
+  const { user } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     (async () => {
       //get profile posts
-      const response = await axios.get(`/posts/profile/${username}`);
-      // console.log(response);
-      if (!response.status === 200) throw Error("data not found");
-      const resData = await response.data;
-      setPosts(resData);
+      const profilePosts = await axios.get(`/posts/profile/${username}`);
+
+      setPosts(
+        profilePosts.data.sort((p1, p2) => {
+          return new Date(p2.createdAt) - new Date(p1.createdAt);
+        })
+      );
     })();
   }, [username]);
 
@@ -32,10 +36,15 @@ const ProfileFeed = ({ username, user }) => {
       // }}
       className="col-span-2  w-full xl:px-3 md:px-1"
     >
-      {/* <ProfileSharePost id={user._id} /> */}
+      {user._id === postuser._id ? (
+        <ProfileSharePost postuser={postuser} />
+      ) : (
+        ""
+      )}
+
       {posts.map((post) => (
         <div key={post._id}>
-          <ProfilePosts post={post} postuser={user} />
+          <ProfilePosts post={post} postuser={postuser} />
         </div>
       ))}
     </div>

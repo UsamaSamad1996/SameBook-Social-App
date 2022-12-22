@@ -4,12 +4,9 @@ import PermMediaIcon from "@mui/icons-material/PermMedia";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import ProfileFeed from "../components/Profile/ProfileFeed";
 import ProfileIntroBar from "../components/Profile/ProfileIntroBar";
-// import { useEffect, useState } from "react";
 import axios from "axios";
-// import { useContext } from "react";
 import Avatar from "../../src/images/avatar.png";
 import Camel from "../images/camel.avif";
-// import { AuthContext } from "../contextAPI/AuthContext";
 import { useParams } from "react-router-dom";
 
 ////
@@ -46,7 +43,6 @@ const ProfilePage = () => {
           style={{
             width: "70.5rem",
             height: "31rem",
-            // border: "1px solid #3bc6fc",
             borderRadius: "1rem",
             objectFit: "cover",
           }}
@@ -94,9 +90,9 @@ const ProfilePage = () => {
         </div>
       </div>
       <div className="profileBody flex  justify-center">
-        <div className="gridContainer grid grid-cols-3 grid-flow-col w-4/6 relative top-5  ml-7 rounded-2xl">
+        <div className="gridContainer grid grid-cols-3 grid-flow-col w-4/6 relative top-5  ml-7 rounded-2xl mt-2">
           <ProfileIntroBar user={postUser} />
-          <ProfileFeed username={postUser.username} user={postUser} />
+          <ProfileFeed username={postUser.username} postuser={postUser} />
         </div>
       </div>
     </div>

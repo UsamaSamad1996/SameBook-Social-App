@@ -15,19 +15,22 @@ const Feed = () => {
       //get timeline posts
       const posts = await axios.get(`/posts/timeline/${user._id}`);
       // console.log(posts);
-      if (!posts.status === 200) throw Error("data not found");
-      const postsData = await posts.data;
-      setPosts(postsData);
+      // if (!posts.status === 200) throw Error("data not found");
+      // const postsData = await posts.data;
+      setPosts(
+        posts.data.sort((p1, p2) => {
+          return new Date(p2.createdAt) - new Date(p1.createdAt);
+        })
+      );
     })();
-  }, []);
+  }, [user._id]);
 
   return (
     <div
       // style={{
-      //   // height: "45rem",
-      //   overflowY: "scroll",
+      //   width: "50%",
       // }}
-      className="col-span-2  w-full xl:px-10 md:px-1  hover:overflow-y-scroll  mb-16"
+      className="  px-0 mx-0 xl:px-10 md:px-1    relative md:ml-[25%]  md:w-[50%]"
     >
       <SharePost />
       {posts.map((post) => (

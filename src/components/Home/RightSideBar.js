@@ -9,13 +9,14 @@ import { users } from "../../DummyData";
 const RightSideBar = () => {
   return (
     <div
-      // style={{
-      //   // height: "45rem",
-      //   overflowY: "scroll",
-      // }}
-      className="hover:overflow-scroll h-screen"
+      style={{
+        position: "fixed",
+        width: "25%",
+        height: "43.9rem",
+      }}
+      className="hover:overflow-y-scroll z-0 ml-[75%] hidden md:flex"
     >
-      <div className="rightbarwrapper pt-2 mb-16">
+      <div className="rightbarwrapper pt-2 ">
         <div className="heading flex items-center">
           <h1 className="text-3xl font-semibold text-slate-600 pt-3 pb-4 pl-10  ">
             Online Friends List
