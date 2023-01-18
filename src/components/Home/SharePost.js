@@ -48,10 +48,10 @@ const SharePost = () => {
     <div>
       <div
         style={{ boxShadow: "8px 7px 6px 0px rgba(166,153,153,0.68)" }}
-        className="shareBox flex flex-col p-5  border-2 border-slate-300 rounded-lg md:m-5 mb-4  bg-white"
+        className="shareBox flex flex-col md:p-5 py-5 border-2 border-slate-300 rounded-lg md:m-5 mb-4  bg-white"
       >
         <form onSubmit={handleSubmit}>
-          <div className="shareTop flex p-2 mb-2 flex-auto items-center">
+          <div className="shareTop flex px-4 md:p-2 mt-2 md:mt-0 mb-4 md:mb-2 flex-auto items-center">
             <Link to={`/Profile/${user._id}`}>
               {" "}
               <img
@@ -62,7 +62,7 @@ const SharePost = () => {
             </Link>
             {/* Create Post Text Input Field */}
             <textarea
-              className="md:w-full rounded-3xl p-3 ml-5 bg-slate-200 placeholder-slate-600 focus:h-40 hover:outline-none  outline-none"
+              className="md:w-full rounded-3xl p-3 ml-3 md:ml-5 bg-slate-200 placeholder-slate-600 focus:h-40 hover:outline-none  outline-none"
               name="post"
               type="text"
               placeholder={`Whats on your mind ${user.username}? Post Here!`}

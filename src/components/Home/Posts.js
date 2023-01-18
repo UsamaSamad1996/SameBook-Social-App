@@ -104,7 +104,7 @@ const Posts = ({ post }) => {
     <div>
       <div
         style={{ boxShadow: "8px 7px 6px 0px rgba(166,153,153,0.68)" }}
-        className="shareBox flex flex-col md:p-5 py-5 border-2 border-slate-300 rounded-lg md:m-5 my-4 bg-white"
+        className="shareBox flex flex-col md:p-5 py-5 border-2 border-slate-300 rounded-lg md:m-5 my-6 bg-white"
       >
         {isDeleting ? (
           <div className="h-48 flex justify-center items-center">
@@ -174,11 +174,11 @@ const Posts = ({ post }) => {
             {/* post description caption & post image */}
             {post.img ? (
               <div>
-                <div className="description px-4 md:pl-2 md:pr-5 md:pb-2 text-lg text-justify break-words">
+                <div className="description pl-4 pr-6 mb-2 md:mb-1 mt-5 md:mt-3 md:pl-2 md:pr-5 md:pb-2 text-lg  break-words">
                   <p>{post.desc}</p>
                 </div>
 
-                <div className="image">
+                <div className="image ">
                   <img
                     className="object-fill bg-black"
                     style={{ height: "70%", width: "100%" }}
@@ -188,15 +188,15 @@ const Posts = ({ post }) => {
                 </div>
               </div>
             ) : (
-              <div className="description pl-2 pr-5 pb-4 text-lg text-justify break-words">
+              <div className="description pl-4 pr-6 mb-4 md:mb-0 mt-5  md:pl-2 md:pr-5 md:pb-3 text-lg  break-words">
                 <p>{post.desc}</p>
               </div>
             )}
             {/* heart & like images */}
-            <div className="likesComment flex py-2 ">
+            <div className="likesComment flex py-2 mt-2 mb-1 md:mb-0">
               <div className="likes flex ml-2 items-center justify-center">
                 {likes > 0 ? (
-                  <div className="flex">
+                  <div className="flex ml-2 md:ml-0">
                     <img
                       className="h-6 w-6 rounded-full object-fill "
                       src={Likes}
@@ -209,7 +209,7 @@ const Posts = ({ post }) => {
                     />
                   </div>
                 ) : (
-                  <div className="flex">
+                  <div className="flex ml-2 md:ml-0">
                     <img
                       className="h-6 w-6 my-0 object-fill "
                       src={LOL}
@@ -218,7 +218,7 @@ const Posts = ({ post }) => {
                   </div>
                 )}
 
-                <p className="pl-2 text-lg text-slate-600">
+                <p className="pl-2 text-lg text-slate-700">
                   {likes > 1 && isLike === true
                     ? `You & ${likes} Others`
                     : likes > 1 && isLike === false
@@ -233,7 +233,7 @@ const Posts = ({ post }) => {
                 </p>
               </div>
 
-              <div className="counts flex flex-grow justify-end items-center text-lg text-slate-600">
+              <div className="counts flex flex-grow justify-end items-center text-lg text-slate-700">
                 <p>{Math.round(Math.random() * 10)} Comments</p>
 
                 <p className="ml-5 ">{likes > 0 ? `${likes} Likes` : ""}</p>
@@ -245,7 +245,7 @@ const Posts = ({ post }) => {
 
             <hr />
             {/* likes comment & share Buttons */}
-            <div className="Write flex justify-evenly pt-2 ">
+            <div className="Write flex justify-evenly pt-1 ">
               {isLike ? (
                 <button
                   onClick={handleLikes}

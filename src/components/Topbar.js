@@ -28,7 +28,6 @@ const Topbar = () => {
   const [popover, setPopOver] = useState(null);
   const open = Boolean(popover);
   const match = useMatch("/");
-  // console.log(match);
 
   /// Functions
 

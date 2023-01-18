@@ -53,14 +53,14 @@ const ProfilePage = () => {
           <PermMediaIcon /> Edit Cover Photo
         </button>
       </div>
-      <div className="1 flex justify-center ">
+      <div className="1 profilepic name and buttons flex justify-center ">
         <div
           style={{ boxShadow: "8px 7px 6px 0px rgba(166,153,153,0.68)" }}
-          className="2 flex  w-4/6  border-b-2 border-stone-400 md:flex-wrap md:justify-center lg:flex-wrap lg:justify-center bg-white ml-6 rounded-2xl pb-5"
+          className="2 flex  md:w-4/6  border-b-2 border-stone-400 md:flex-wrap md:justify-center lg:flex-wrap lg:justify-center bg-white md:ml-6 rounded-2xl md:pb-5"
         >
-          <div className="profileimageflex-auto">
+          <div className="profileimage flex-auto">
             <img
-              className=" w-60 h-60 rounded-full border-8 border-white object-contain bg-white mt-[-90px] ml-[50px] "
+              className=" w-60 h-60 rounded-full border-8 border-white object-contain md:bg-white md:mt-[-90px] md:ml-[50px] "
               src={postUser.profilePicture || Avatar}
               alt="no poster"
             />
@@ -90,7 +90,7 @@ const ProfilePage = () => {
         </div>
       </div>
       <div className="profileBody flex  justify-center">
-        <div className="gridContainer grid grid-cols-3 grid-flow-col w-4/6 relative top-5  ml-7 rounded-2xl mt-2">
+        <div className="gridContainer md:grid md:grid-cols-3 md:grid-flow-col md:w-4/6 md:relative top-5  md:ml-7 rounded-2xl mt-2">
           <ProfileIntroBar user={postUser} />
           <ProfileFeed username={postUser.username} postuser={postUser} />
         </div>

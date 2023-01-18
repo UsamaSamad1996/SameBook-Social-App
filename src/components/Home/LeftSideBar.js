@@ -30,14 +30,14 @@ const LeftSideBar = () => {
       style={{
         position: "fixed",
         width: "25%",
-        height: "43.9rem",
+        height: "90%",
       }}
-      className="hover:overflow-y-scroll hidden md:flex"
+      className="overflow-y-auto scrollbar-none overflow-hidden hidden md:flex "
     >
       <div className="sidebarwrapper pt-2  ">
         <ul className="sideBarList  leading-10 pl-4 list-inside text-lg ">
           <Link to={`/Profile/${user._id}`}>
-            <li className="sideBarItem pb-2 pt-4 flex items-center">
+            <li className="sideBarItem pb-2 pt-4 flex items-center text-slate-600 hover:text-black">
               {" "}
               <img
                 className="h-14 w-14 rounded-full object-cover border-2 border-blue-500 bg-blue-500"
@@ -49,59 +49,59 @@ const LeftSideBar = () => {
               </span>
             </li>
           </Link>
-          <li className="sideBarItem py-1.5 flex items-center">
+          {/* <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <img
-              className="h-12 w-12 rounded-full object-cover"
+              className="h-12 w-12 rounded-full object-cover top-1 "
               src={messengerImage}
               alt="no poster"
             />
             <span className="pl-7 text-xl font-semibold">Messenger</span>
-          </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          </li> */}
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <RssFeedIcon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">Feed</span>
           </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <ChatIcon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">Chats</span>
           </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <OndemandVideoIcon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">Watch Videos</span>
           </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <Diversity3Icon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">Friends</span>
           </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <StarBorderPurple500Icon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">BookMarks</span>
           </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <ContactSupportIcon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">Questions</span>
           </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <WorkOutlineIcon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">Jobs</span>
           </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <EmojiEventsIcon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">Events</span>
           </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <SportsVolleyballIcon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">Play Games</span>
           </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <LocalGroceryStoreOutlinedIcon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">Market</span>
           </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <SportsVolleyballIcon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">Play Games</span>
           </li>
-          <li className="sideBarItem py-1.5 flex items-center">
+          <li className="sideBarItem py-1.5 flex items-center  text-slate-600 hover:text-black">
             <SportsVolleyballIcon style={{ fontSize: "3rem" }} />
             <span className="pl-7 text-xl font-semibold">Play Games</span>
           </li>

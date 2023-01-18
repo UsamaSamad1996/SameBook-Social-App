@@ -19,7 +19,7 @@ const HomePage = () => {
         // className="homeContainer grid grid-cols-4 grid-flow-col  gap-1 relative top-20 bg-gray-100"
         className="flex relative top-20 md:bg-gray-100 "
       >
-        <LeftSideBar className="flex-auto " />
+        <LeftSideBar className="flex-auto  " />
         <Feed className="flex-auto" />
         <RightSideBar className="flex-auto" />
       </div>
